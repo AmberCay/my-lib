@@ -1,0 +1,28 @@
+header {
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--main-dark);
+    color: var(--main-highlight);
+    padding-inline: 1rem;
+}
+
+.logo-side {
+    font-family: var(--ff-fancy);
+    display: flex;
+    align-items: flex-end;
+}
+
+.links-side {
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.links-side a {
+    color: var(--main-highlight);
+    text-decoration: none;
+    font-family: var(--ff-main);
+}

@@ -1,0 +1,14 @@
+footer {
+    height: 5vw;
+    background-color: var(--main-dark);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-family: var(--ff-main);
+    color: var(--main-highlight);
+}
+
+footer a {
+    text-decoration: none;
+    color: var(--main-contrast);
+}
