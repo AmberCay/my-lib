@@ -1,0 +1,23 @@
+<div class="page">
+  <div class="card">
+    <img class="pfp-img" src="{{amber.photo}}" alt="" />
+    <h2>{{amber.name + ' ' + amber.last_name}}</h2>
+    <div class="line"></div>
+    <ul>
+      <li>Name: {{amber.name}}</li>
+      <li>Lastname: {{amber.last_name}}</li>
+      <li>Email: {{amber.email}}</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>Edit your profile</h2>
+    <div class="line"></div>
+    <form action="">
+      <input type="text" name="name" id="name" placeholder="Name" #input1 />
+      <input type="text" name="Lastname" id="lastname" placeholder="Lastname" #input2 />
+      <input type="email" name="email" id="email" placeholder="Email" #input3 />
+      <input type="text" name="photo" id="photo" placeholder="Photo Url" #input4 />
+      <button on-click="modifyProfile( input1.value, input2.value, input3.value, input4.value)">Modify</button>
+    </form>
+  </div>
+</div>
