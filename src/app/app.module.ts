@@ -12,6 +12,9 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { BooksComponent } from './pages/books/books.component';
 import { RefPipePipe } from './pipes/ref-pipe.pipe';
 import { CardComponent } from './components/card/card.component';
+import { AddBookComponent } from './pages/add-book/add-book.component';
+import { EditBookComponent } from './pages/edit-book/edit-book.component';
+
 
 @NgModule({
   declarations: [
@@ -24,7 +27,9 @@ import { CardComponent } from './components/card/card.component';
     ProfileComponent,
     BooksComponent,
     RefPipePipe,
-    CardComponent
+    CardComponent,
+    AddBookComponent,
+    EditBookComponent
   ],
   imports: [
     BrowserModule,
