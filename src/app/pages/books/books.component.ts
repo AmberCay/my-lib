@@ -11,20 +11,22 @@ export class BooksComponent {
 
   constructor() {
     this.books = [
-      new Book('Siren\'s of Titan', 'Soft cover', 'Kurt Vonnegut', 14, 'https://jonathanrosenbaum.net/wp-content/uploads/2011/02/the_sirens-of_titan.jpg'),
-      new Book('Candide, or Optimism', 'Soft cover', 'Voltaire', 14, 'https://cdn2.penguin.com.au/covers/original/9780140455106.jpg')
+      new Book(0, 0, 'Siren\'s of Titan', 'Soft cover', 'Kurt Vonnegut', 14, 'https://jonathanrosenbaum.net/wp-content/uploads/2011/02/the_sirens-of_titan.jpg'),
+      new Book(1, 1, 'Candide, or Optimism', 'Soft cover', 'Voltaire', 14, 'https://cdn2.penguin.com.au/covers/original/9780140455106.jpg')
     ]
+ 
   }
 
-  public addBook(title:string, type:string, author:string, price:string, photo:string) {
-    this.books.push(new Book(title, type, author, Number(price), photo))
+  public addBook(title:string, type:string, author:string, price:string, photo:string, id_book:string) {
+    let newest = new Book(Number(id_book), 0, title, type, author, Number(price), photo)
+    this.books.push(newest)
   }
-  
-  public isEven(i:number):boolean {
-    let bool: boolean = true
-    if (i % 2 !== 0) {
-      bool = false
+
+  eliminate(book_id:number) {
+    for (let i = 0; i < this.books.length; i++) {
+      if (this.books[i].id_book == book_id) {
+        this.books.splice(i, 1)
+      }
     }
-    return bool
-  }
+    }
 }

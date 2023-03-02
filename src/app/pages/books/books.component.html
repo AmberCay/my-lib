@@ -3,7 +3,11 @@
     There are no Books for now
   </div>
   <ng-template #showBooks>
-    <app-card></app-card>
+    <div class="books-grid">
+      <ng-container *ngFor="let book of books; let even = even">
+        <app-card [book]="book" [even]="even" (cardEvent)="eliminate($event)"></app-card>
+      </ng-container>
+    </div>
   </ng-template>
   <div class="form-section">
     <h2>Add a book!</h2>
@@ -31,6 +35,13 @@
         placeholder="Photo Url"
         #input5
       />
+      <input
+        type="number"
+        name="id_book"
+        id="id_book"
+        placeholder="Book id #"
+        #input6
+      />
       <button
         type="button"
         class="form-button"
@@ -40,7 +51,8 @@
             input2.value,
             input3.value,
             input4.value,
-            input5.value
+            input5.value,
+            input6.value
           )
         "
       >
@@ -49,3 +61,5 @@
     </form>
   </div>
 </div>
+
+*ngIf="doNotShow != null"

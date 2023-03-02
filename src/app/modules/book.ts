@@ -12,9 +12,9 @@ export class Book {
 
     // constructor
 
-    constructor(title:string, type:string, author:string, price:number, photo:string) {
-        this.id_book = 0
-        this.id_user = 0
+    constructor(id_book: number = 0, id_user: number = 0, title:string, type:string, author:string, price:number, photo:string) {
+        this.id_book = id_book
+        this.id_user = id_user
         this.title = title
         this.type = type
         this.author = author
