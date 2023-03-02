@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { ToastrService } from 'ngx-toastr/public_api';
 import { Book } from '../modules/book';
 
 @Injectable({
@@ -11,7 +12,7 @@ export class BooksService {
 
   private books: Book[]
 
-  constructor() {
+  constructor(private toastrSvc: ToastrService) {
     this.books = [
       new Book(0, 0, 'Siren\'s of Titan', 'Soft cover', 'Kurt Vonnegut', 14, 'https://jonathanrosenbaum.net/wp-content/uploads/2011/02/the_sirens-of_titan.jpg'),
       new Book(1, 1, 'Candide, or Optimism', 'Soft cover', 'Voltaire', 14, 'https://cdn2.penguin.com.au/covers/original/9780140455106.jpg')
@@ -31,6 +32,7 @@ export class BooksService {
 
   public add(book:Book) {
     this.books.push(book)
+    this.toastrSvc.success(`${book.title} was added!`, 'Get Lit app')
   }
 
   public edit(editedBook:Book):boolean {

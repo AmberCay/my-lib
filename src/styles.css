@@ -8,6 +8,8 @@
     --ff-main: 'Fragment Mono', monospace;
 }
 
+@import 'ngx-toastr/toastr';
+
 *,
 *::before,
 *::after {
