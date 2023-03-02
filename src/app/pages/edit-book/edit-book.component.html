@@ -1,1 +1,51 @@
-<p>edit-book works!</p>
+<div class="form-section">
+    <h2>Edit the book!</h2>
+    <form action="" class="form">
+      <input
+        type="number"
+        name="id_book"
+        id="id_book"
+        placeholder="Book Reference # of book to edit"
+        #input6
+      />
+      <input type="text" name="title" id="title" placeholder="Title" #input1 />
+      <input type="text" name="type" id="type" placeholder="Type" #input2 />
+      <input
+        type="text"
+        name="author"
+        id="author"
+        placeholder="Author"
+        #input3
+      />
+      <input
+        type="number"
+        name="price"
+        id="price"
+        placeholder="Price"
+        #input4
+      />
+      <input
+        type="text"
+        name="photo"
+        id="photo"
+        placeholder="Photo Url"
+        #input5
+      />
+      <button
+        type="button"
+        class="form-button"
+        on-click="
+          sendEdit(
+            input1.value,
+            input2.value,
+            input3.value,
+            input4.value,
+            input5.value,
+            input6.value
+          )
+        "
+      >
+        Edit Book
+      </button>
+    </form>
+  </div>

@@ -24,13 +24,8 @@ export class BooksService {
   }
 
   public getOne(id_book:number): Book {
-    // let requestedBook: Book = this.books.filter(book => book.id_book === id_book);
     let requestedBook: Book;
-    for (let book of this.books) {
-      if (book.id_book === id_book) {
-        requestedBook = book;
-      }
-    }
+    requestedBook = this.books.find(book => book.id_book === id_book);
     return requestedBook;
   }
 
@@ -38,18 +33,31 @@ export class BooksService {
     this.books.push(book)
   }
 
-  public edit(book:Book) {
-
+  public edit(editedBook:Book):boolean {
+    let index: number = this.books.findIndex(book => book.id_book === editedBook.id_book);
+    this.books.splice(index,1, editedBook)
+    // if (this.getOne(book.id_book).id_book != null) {
+    //   requestedBook = this.getOne(book.id_book)
+    //   doesBookExist = true;
+    //   requestedBook.title = book.title;
+    //   requestedBook.author = book.author;
+    //   requestedBook.price = book.price;
+    //   requestedBook.photo = book.photo;
+    //   requestedBook.type = book.type;
+    // }
+    return index <= 0;
   }
 
   public delete(id_book:number):boolean {
-    let bookExisted: boolean = false;
-    for (let i = 0; i < this.books.length; i++) {
-      if (this.books[i].id_book === id_book) {
-        this.books.splice(i,1);
-        bookExisted = true;
-      }
-    }
-    return bookExisted
+    // let bookExisted: boolean = false;
+    // for (let i = 0; i < this.books.length; i++) {
+    //   if (this.books[i].id_book === id_book) {
+    //     this.books.splice(i,1);
+    //     bookExisted = true;
+    //   }
+    // }
+    let index: number = this.books.findIndex(book => book.id_book === id_book);
+    this.books.splice(index, 1)
+    return index<= 0;
   }
 }

@@ -3,11 +3,19 @@
     There are no Books for now
   </div>
   <ng-template #showBooks>
+    <form action="" class="search">
+        <input type="text" name="search" id="search" placeholder="Search by Book Reference number" #search>
+        <button type="button" class="search-button" on-click="searchBook(search.value)"><span class="material-symbols-outlined">
+          search
+          </span></button>
+      </form>
+
     <div class="books-grid">
       <ng-container *ngFor="let book of books; let even = even">
         <app-card [book]="book" [even]="even" (cardEvent)="eliminate($event)"></app-card>
       </ng-container>
     </div>
+
   </ng-template>
   
 </div>
