@@ -11,6 +11,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { BooksComponent } from './pages/books/books.component';
 import { RefPipePipe } from './pipes/ref-pipe.pipe';
+import { CardComponent } from './components/card/card.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { RefPipePipe } from './pipes/ref-pipe.pipe';
     RegisterComponent,
     ProfileComponent,
     BooksComponent,
-    RefPipePipe
+    RefPipePipe,
+    CardComponent
   ],
   imports: [
     BrowserModule,

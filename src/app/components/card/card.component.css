@@ -1,0 +1,66 @@
+.books-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-gap: 2rem;
+    padding: 4rem;
+}
+
+.card {
+    height: 28rem;
+    overflow: hidden;
+    width: 22rem;
+    background-color: var(--main-dark);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 2rem;
+}
+
+.card img {
+    height: 50%;
+    width: 100%;
+    object-fit: cover;
+    border-bottom: 2px solid var(--main-contrast);
+}
+
+.card-info {
+    height: 40%;
+    width: 100%;
+    color: var(--main-highlight);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.card-info h3 {
+    font-family: var(--ff-fancy);
+    font-size: 1.6rem;
+}
+
+.card-details {
+    padding-left: 1rem;
+    align-self: flex-start;
+    text-align: left;
+}
+
+.card-info p {
+    font-family: var(--ff-main);
+}
+
+.button {
+    width: 80%;
+    height: 2rem;
+    background-color: var(--main-contrast);
+    color: var(--main-dark);
+    border: none;
+    font-family: var(--ff-main);
+    border-radius: 2rem;
+}
+
+.even-button {
+    background-color: var(--main-highlight);
+    color: var(--main-dark);
+}

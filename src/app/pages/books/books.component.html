@@ -1,35 +1,51 @@
 <div class="book-section">
-    <div class="noBooks" *ngIf="books.length == 0; else showBooks">
-        There are no Books for now
-    </div>
-    <ng-template #showBooks>
-    <div  class="books-grid">
-        <div *ngFor="let book of books; let i = index; let even = even" class="card">
-            <img src="{{book.photo}}" alt="{{book.title}}">
-                <div class="card-info">
-                    <h3>{{book.title}}</h3>
-                    <div class="card-details">
-                        <p>Author: {{book.author}}</p>
-                        <p>Type: {{book.type}}</p>
-                        <p>{{book.id_book | refPipe}}</p>
-                    </div>
-                        
-
-                </div>
-                <button class="button" [ngClass]="even == true ? 'button even-button': 'button'">Buy for {{book.price}}€</button> 
-        </div>        
-    </div>
-</ng-template>
-<div class="form-section">
+  <div class="noBooks" *ngIf="books.length == 0; else showBooks">
+    There are no Books for now
+  </div>
+  <ng-template #showBooks>
+    <app-card></app-card>
+  </ng-template>
+  <div class="form-section">
     <h2>Add a book!</h2>
     <form action="" class="form">
-        <input type="text" name="title" id="title" placeholder="Title" #input1>
-        <input type="text" name="type" id="type" placeholder="Type" #input2>
-        <input type="text" name="author" id="author" placeholder="Author" #input3>
-        <input type="number" name="price" id="price" placeholder="Price" #input4>
-        <input type="text" name="photo" id="photo" placeholder="Photo Url" #input5>
-        <button type="button" class="form-button" on-click="addBook(input1.value, input2.value, input3.value, input4.value, input5.value)">Add Book</button>
+      <input type="text" name="title" id="title" placeholder="Title" #input1 />
+      <input type="text" name="type" id="type" placeholder="Type" #input2 />
+      <input
+        type="text"
+        name="author"
+        id="author"
+        placeholder="Author"
+        #input3
+      />
+      <input
+        type="number"
+        name="price"
+        id="price"
+        placeholder="Price"
+        #input4
+      />
+      <input
+        type="text"
+        name="photo"
+        id="photo"
+        placeholder="Photo Url"
+        #input5
+      />
+      <button
+        type="button"
+        class="form-button"
+        on-click="
+          addBook(
+            input1.value,
+            input2.value,
+            input3.value,
+            input4.value,
+            input5.value
+          )
+        "
+      >
+        Add Book
+      </button>
     </form>
+  </div>
 </div>
-</div>
-
