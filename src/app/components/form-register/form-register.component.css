@@ -1,4 +1,4 @@
-
+/* 
 form {
     height: 28rem;
     width: 80vw;
@@ -25,4 +25,13 @@ form button {
     border: none;
     border-radius: 4rem;
     color: #f3eced;
+} */
+
+.btn-login {
+    background-color: var(--main-contrast);
+    color: var(--main-dark);
+    font-family: var(--ff-main);
+    padding: 0.4rem;
+    border-radius: 0.8rem;
+    border: none;
 }

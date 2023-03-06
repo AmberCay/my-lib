@@ -1,0 +1,26 @@
+<div class="form-area">
+    <h3 class="pb-3">Log in bookworm!</h3>
+    <form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)">
+        <div class="form-group color-contrast">
+            <label>Email</label>
+            <input type="email" name="email" id="email" class="form-control" [(ngModel)]="user.email" #emailId="ngModel" 
+            [ngClass]="{ 'is-invalid': (emailId.dirty || emailId.touched) && emailId.invalid }" email required>
+            <div *ngIf="(emailId.dirty || emailId.touched) && emailId.invalid" class="invalid-feedback">
+                <div *ngIf="emailId.errors.required">An email adress is required</div>
+                <div *ngIf="emailId.errors.email">Email adress not valid</div>
+            </div>
+        </div>
+        <div class="form-group color-contrast">
+            <label>Password</label>
+            <input type="password" name="password" [(ngModel)]="user.password" class="form-control" #passwordId="ngModel" 
+            [ngClass]="{ 'is-invalid': (passwordId.dirty || passwordId.touched) && passwordId.invalid }" minlength="8" required>
+            <div *ngIf="(passwordId.dirty || passwordId.touched) && passwordId.invalid" class="invalid-feedback">
+                <div *ngIf="passwordId.errors.required">Password is needed</div>
+                <div *ngIf="passwordId.errors['minlength']">Your password must be at least 8 characters long</div>
+            </div>
+        </div>
+        <div class="pt-3 mx-auto">
+            <button type="button" class="btn-login" [disabled]="loginForm.invalid">Log in</button>
+        </div>
+    </form>
+</div>

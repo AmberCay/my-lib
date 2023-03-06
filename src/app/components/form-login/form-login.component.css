@@ -1,0 +1,19 @@
+.form-area h3 {
+    color: var(--main-highlight);
+    font-family: var(--ff-fancy);
+    font-size: 1.8rem;
+}
+
+.color-contrast {
+    color: var(--main-contrast);
+    font-family: var(--ff-main);
+}
+
+.btn-login {
+    background-color: var(--main-contrast);
+    color: var(--main-dark);
+    font-family: var(--ff-main);
+    padding: 0.4rem;
+    border-radius: 0.8rem;
+    border: none;
+}

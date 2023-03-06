@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +15,8 @@ import { RefPipePipe } from './pipes/ref-pipe.pipe';
 import { CardComponent } from './components/card/card.component';
 import { AddBookComponent } from './pages/add-book/add-book.component';
 import { EditBookComponent } from './pages/edit-book/edit-book.component';
+import { LoginComponent } from './pages/login/login.component';
+import { FormLoginComponent } from './components/form-login/form-login.component';
 
 
 @NgModule({
@@ -29,11 +32,15 @@ import { EditBookComponent } from './pages/edit-book/edit-book.component';
     RefPipePipe,
     CardComponent,
     AddBookComponent,
-    EditBookComponent
+    EditBookComponent,
+    LoginComponent,
+    FormLoginComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

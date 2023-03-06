@@ -1,11 +1,98 @@
+<form [formGroup]="registerForm" class="form-group">
+    <div class="mb-5">
+        <input type="text" name="name" id="name" placeholder="First Name" formControlName="fName" class="form-control"
+            [ngClass]="{
+        'is-invalid':
+          (registerForm.get('fName').dirty ||
+            registerForm.get('fName').touched) &&
+          !registerForm.get('fName').valid
+      }" />
+        <div *ngIf="!registerForm.get('fname').valid" class="invalid-feedback">
+            A name is required
+        </div>
+    </div>
 
-    <form action="">
-        <input type="text" name="name" id="name" placeholder="First Name">
-        <input type="text" name="lastName" id="lastName" placeholder="Last name">
-        <input type="email" name="email" id="email" placeholder="Email">
-        <input type="text" name="url" id="url" placeholder="url">
-        <input type="password" name="password" id="password" placeholder="Password">
-        <input type="password" name="password2" id="password2" placeholder="Please repeat your Password">
-        <button>Register</button>
-    </form>
+    <div class="mb-5">
+        <input type="text" name="lastName" id="lastName" placeholder="Last name" formControlName="lastName"
+            class="form-control" [ngClass]="{
+        'is-invalid':
+          (registerForm.get('lastName').dirty ||
+            registerForm.get('lastName').touched) &&
+          !registerForm.get('lastName').valid
+      }" />
+        <div *ngIf="!registerForm.get('lastName').valid" class="invalid-feedback">
+            A last name is required
+        </div>
+    </div>
 
+    <div class="mb-5">
+        <input type="email" name="email" id="email" placeholder="Email" formControlName="email" class="form-control"
+            [ngClass]="{
+        'is-invalid':
+          (registerForm.get('email').dirty ||
+            registerForm.get('email').touched) &&
+          !registerForm.get('email').valid
+      }" />
+        <div *ngIf="!registerForm.get('email').valid" class="invalid-feedback">
+            <div *ngIf="registerForm.get('email').errors.required">
+                An email adress is required
+            </div>
+            <div *ngIf="registerForm.get('email').errors.email">
+                write a valid email adress
+            </div>
+        </div>
+    </div>
+
+    <div class="mb-5">
+        <input type="text" name="url" id="url" placeholder="url" formControlName="photo" class="form-control" [ngClass]="{
+        'is-invalid':
+          (registerForm.get('photo').dirty ||
+            registerForm.get('photo').touched) &&
+          !registerForm.get('photo').valid
+      }" />
+        <div *ngIf="!registerForm.get('photo').valid" class="invalid-feedback">
+            A picture url is required
+        </div>
+    </div>
+
+    <div class="mb-5">
+        <input type="password" name="password" id="password" placeholder="Password" formControlName="password"
+            class="form-control" [ngClass]="{
+        'is-invalid':
+          (registerForm.get('password').dirty ||
+            registerForm.get('password').touched) &&
+          !registerForm.get('password').valid
+      }" />
+        <div *ngIf="!registerForm.get('password').valid" class="invalid-feedback">
+            <div *ngIf="registerForm.get('password').errors.required">
+                A password is required
+            </div>
+            <div *ngIf="registerForm.get('password').errors['minlength']">
+                Your password must be 8 characters long
+            </div>
+        </div>
+    </div>
+
+    <div class="mb-5">
+        <input type="password" name="password2" id="password2" placeholder="Please repeat your Password"
+            formControlName="password2" class="form-control" [ngClass]="{
+        'is-valid':
+          (registerForm.get('password2').dirty ||
+            registerForm.get('password2').touched) &&
+          !registerForm.get('password2').valid
+      }" />
+        <div *ngIf="!registerForm.get('password2')" class="invalid-feedback">
+            <div *ngIf="registerForm.get('password2').errors.required">
+                This field is required
+            </div>
+            <div *ngIf="
+          !registerForm.get('password2').errors.required &&
+          registerForm.get('password2').errors.matchPasswords
+        "></div>
+        </div>
+    </div>
+
+    <div class="pt-3 mx-auto">
+        <button type="button" class="btn-login">Register</button>
+    </div>
+</form>
