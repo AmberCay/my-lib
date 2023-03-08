@@ -35,7 +35,9 @@ export class BooksService {
 
   public edit(editedBook:Book):boolean {
     let index: number = this.books.findIndex(book => book.id_book === editedBook.id_book);
-    this.books.splice(index,1, editedBook)
+    if (index != -1) {
+      this.books.splice(index,1, editedBook)
+    }
     // if (this.getOne(book.id_book).id_book != null) {
     //   requestedBook = this.getOne(book.id_book)
     //   doesBookExist = true;
@@ -45,7 +47,7 @@ export class BooksService {
     //   requestedBook.photo = book.photo;
     //   requestedBook.type = book.type;
     // }
-    return index <= 0;
+    return index != -1;
   }
 
   public delete(id_book:number):boolean {
@@ -57,7 +59,10 @@ export class BooksService {
     //   }
     // }
     let index: number = this.books.findIndex(book => book.id_book === id_book);
-    this.books.splice(index, 1)
-    return index<= 0;
+    if (index != -1) {
+      this.books.splice(index, 1)
+    }
+    
+    return index != -1;
   }
 }
