@@ -26,3 +26,7 @@ header {
     text-decoration: none;
     font-family: var(--ff-main);
 }
+
+.active-link {
+    text-decoration: underline !important;
+}
