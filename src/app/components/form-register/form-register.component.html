@@ -1,4 +1,66 @@
-<form [formGroup]="registerForm" class="form-group">
+<form [formGroup]="registerForm">
+    <!-- name -->
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Name</label>
+        <input type="text" class="form-control" formControlName="name" [ngClass]="{
+        'is-invalid':
+          (registerForm.get('name').dirty ||
+            registerForm.get('name').touched) &&
+          !registerForm.get('name').valid
+      }" />
+        <div *ngIf="!registerForm.get('name').valid" class="invalid-feedback">A name is required</div>
+    </div>
+    <!-- lastName -->
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Last name</label>
+        <input type="text" class="form-control" formControlName="lastName" [ngClass]="{
+        'is-invalid':
+          (registerForm.get('lastName').dirty ||
+            registerForm.get('lastName').touched) &&
+          !registerForm.get('lastName').valid
+      }" />
+        <div *ngIf="!registerForm.get('lastName').valid" class="invalid-feedback">A last name is required</div>
+    </div>
+    <!-- Email -->
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email</label>
+        <input type="email" class="form-control" formControlName="email" [ngClass]="{
+        'is-invalid':
+          (registerForm.get('email').dirty ||
+            registerForm.get('email').touched) &&
+          !registerForm.get('email').valid
+      }" />
+        <div *ngIf="registerForm.get('email').errors.required" class="invalid-feedback">An email adress is required</div>
+        <div *ngIf="registerForm.get('email').errors.email" class="invalid-feedback">
+            write a valid email adress
+        </div>
+    </div>
+    <!-- photo -->
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Photo url</label>
+        <input type="text" class="form-control" formControlName="photo"/>
+    </div>
+    <!-- password -->
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" class="form-control" formControlName="password" [ngClass]="{'is-invalid': (registerForm.get('password').dirty || registerForm.get('password').touched) && !registerForm.get('password').valid}"/>
+        <div *ngIf="!registerForm.get('password').valid" class="invalid-feedback">
+            <div *ngIf="registerForm.get('password').errors.required">A password is necessary</div>
+            <div *ngIf="registerForm.get('password').errors.minlength">Your password must have more than 8 characters</div>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Rewrite your password</label>
+        <input type="password" class="form-control" formControlName="password2" [ngClass]="{'is-invalid': (registerForm.get('password2').dirty || registerForm.get('password2').touched) && !registerForm.get('password2').valid}"/>
+        <div *ngIf="!registerForm.get('password2').valid" class="invalid-feedback">
+            <div *ngIf="registerForm.get('password2').errors.required">This field is necessary</div>
+            <div *ngIf="registerForm.get('password2').errors.matchPasswords">Your passwords do not match</div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<!-- <form  class="form-group">
     <div class="mb-5">
         <input type="text" name="name" id="name" placeholder="First Name" formControlName="fName" class="form-control"
             [ngClass]="{
@@ -95,4 +157,4 @@
     <div class="pt-3 mx-auto">
         <button type="button" class="btn-login">Register</button>
     </div>
-</form>
+</form> -->

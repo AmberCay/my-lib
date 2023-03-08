@@ -16,7 +16,7 @@ export class FormRegisterComponent {
 
   buildForm() {
     this.registerForm = this.formBuilder.group({
-      fName: ['', Validators.required ],
+      name: ['', Validators.required ],
       lastName: ['', Validators.required ],
       email: ['', [Validators.required, Validators.email]],
       photo: ['', ],
