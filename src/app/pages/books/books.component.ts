@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { elementAt } from 'rxjs';
+import { Answer } from 'src/app/modules/answer';
 import { Book } from 'src/app/modules/book';
 import { BooksService } from 'src/app/shared/books.service';
 
@@ -13,24 +15,27 @@ export class BooksComponent {
   searchedBook: Book;
 
 
-  constructor(public BooksService: BooksService, private toastr: ToastrService) {
-    this.books = this.BooksService.getAll()
+  constructor(public BooksService: BooksService, private toastr: ToastrService, public apiService: BooksService) {
     this.searchedBook = null;
+    this.apiService.getAll().subscribe((answer:Answer) => {
+      this.books = answer.data;
+      console.log(answer);
+    })
   }
 
   public searchBook(search:string): void {
     if (search.length != 0) {
-      if (this.books.findIndex(book => book.id_book == Number(search)) != -1) {
-        let book_id: number = Number(search);
-      this.books = [this.BooksService.getOne(book_id)]
-      }
-      else {
-        this.books = this.BooksService.getAll();
-        this.toastr.error(`A Book with ${search} as an id does not exist yet`)
-      }
+      this.apiService.getOne(Number(search)).subscribe((ans:Answer) => {
+        console.log(ans);
+        if (ans.error) {
+          this.toastr.error('Book id searched does nto exist');
+        }
+        else {
+          this.books = ans.data
+        }
+      })
     }
     else {
-      this.books = this.BooksService.getAll()
       this.toastr.info('No book id searched')
     }
   }

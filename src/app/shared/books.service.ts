@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Book } from '../modules/book';
 
@@ -5,64 +6,45 @@ import { Book } from '../modules/book';
   providedIn: 'root'
 })
 export class BooksService {
-  static getAll() {
-    throw new Error('Method not implemented.');
+  // static getAll() {
+  //   throw new Error('Method not implemented.');
+  // }
+
+  public books: Book[]
+
+  private url = "http://localhost:3000/books"
+  constructor(private http: HttpClient) {
+    
   }
 
-  private books: Book[]
-
-  constructor() {
-    this.books = [
-      new Book(0, 0, 'Siren\'s of Titan', 'Soft cover', 'Kurt Vonnegut', 14, 'https://jonathanrosenbaum.net/wp-content/uploads/2011/02/the_sirens-of_titan.jpg'),
-      new Book(1, 1, 'Candide, or Optimism', 'Soft cover', 'Voltaire', 14, 'https://cdn2.penguin.com.au/covers/original/9780140455106.jpg')
-    ]
+  public getAll() {
+    return this.http.get(this.url)
   }
 
-  public getAll():Book[] {
-    let bookList: Book[] = this.books
-    return bookList;
-  }
-
-  public getOne(id_book:number): Book {
-    let requestedBook: Book;
-    requestedBook = this.books.find(book => book.id_book === id_book);
-    return requestedBook;
+  public getOne(id_book:number) {
+    let newUrl = `${this.url}?id${id_book}`
+    return this.http.get(newUrl);
   }
 
   public add(book:Book) {
-    this.books.push(book)
+    return this.http.post(this.url, book)
   }
 
   public edit(editedBook:Book):boolean {
     let index: number = this.books.findIndex(book => book.id_book === editedBook.id_book);
     if (index != -1) {
-      this.books.splice(index,1, editedBook)
+      // return this.http.put(this.url, editedBook);
     }
-    // if (this.getOne(book.id_book).id_book != null) {
-    //   requestedBook = this.getOne(book.id_book)
-    //   doesBookExist = true;
-    //   requestedBook.title = book.title;
-    //   requestedBook.author = book.author;
-    //   requestedBook.price = book.price;
-    //   requestedBook.photo = book.photo;
-    //   requestedBook.type = book.type;
-    // }
     return index != -1;
   }
 
   public delete(id_book:number):boolean {
-    // let bookExisted: boolean = false;
-    // for (let i = 0; i < this.books.length; i++) {
-    //   if (this.books[i].id_book === id_book) {
-    //     this.books.splice(i,1);
-    //     bookExisted = true;
-    //   }
-    // }
     let index: number = this.books.findIndex(book => book.id_book === id_book);
     if (index != -1) {
       this.books.splice(index, 1)
     }
     
     return index != -1;
+    // return this.http.delete(this.url, id_book);
   }
 }
