@@ -28,7 +28,7 @@ export class BooksComponent {
       this.apiService.getOne(Number(search)).subscribe((ans:Answer) => {
         console.log(ans);
         if (ans.error) {
-          this.toastr.error('Book id searched does nto exist');
+          this.toastr.error('Book id searched does not exist');
         }
         else {
           this.books = ans.data

@@ -30,21 +30,13 @@ export class BooksService {
     return this.http.post(this.url, book)
   }
 
-  public edit(editedBook:Book):boolean {
-    let index: number = this.books.findIndex(book => book.id_book === editedBook.id_book);
-    if (index != -1) {
-      // return this.http.put(this.url, editedBook);
-    }
-    return index != -1;
+  public edit(editedBook:Book) {
+    return this.http.put(this.url, editedBook);
+
   }
 
-  public delete(id_book:number):boolean {
-    let index: number = this.books.findIndex(book => book.id_book === id_book);
-    if (index != -1) {
-      this.books.splice(index, 1)
-    }
-    
-    return index != -1;
-    // return this.http.delete(this.url, id_book);
+  public delete(id_book:number) {
+    let delBook = this.books.find(book => book.id_book = id_book);
+    return this.http.delete(this.url, id_book);
   }
 }
