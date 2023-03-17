@@ -22,7 +22,7 @@ export class BooksService {
   }
 
   public getOne(id_book:number) {
-    let newUrl = `${this.url}?id${id_book}`
+    let newUrl = `${this.url}?id=${id_book}`
     return this.http.get(newUrl);
   }
 
@@ -36,7 +36,7 @@ export class BooksService {
   }
 
   public delete(id_book:number) {
-    let delBook = this.books.find(book => book.id_book = id_book);
-    return this.http.delete(this.url, id_book);
+    let deletedBook = {headers: null, body:{id_book:id_book}};
+    return this.http.delete(this.url, deletedBook);
   }
 }
