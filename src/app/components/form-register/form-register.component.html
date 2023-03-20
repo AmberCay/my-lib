@@ -1,4 +1,4 @@
-<form [formGroup]="registerForm">
+<form [formGroup]="registerForm" onsubmit="registerUser(name, lastName, email, photo, password)">
     <!-- name -->
     <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Name</label>
@@ -7,7 +7,7 @@
           (registerForm.get('name').dirty ||
             registerForm.get('name').touched) &&
           !registerForm.get('name').valid
-      }" />
+      }" #input1 />
         <div *ngIf="!registerForm.get('name').valid" class="invalid-feedback">A name is required</div>
     </div>
     <!-- lastName -->
@@ -18,7 +18,7 @@
           (registerForm.get('lastName').dirty ||
             registerForm.get('lastName').touched) &&
           !registerForm.get('lastName').valid
-      }" />
+      }" #input2 />
         <div *ngIf="!registerForm.get('lastName').valid" class="invalid-feedback">A last name is required</div>
     </div>
     <!-- Email -->
@@ -29,7 +29,7 @@
           (registerForm.get('email').dirty ||
             registerForm.get('email').touched) &&
           !registerForm.get('email').valid
-      }" />
+      }" #input3 />
         <div *ngIf="registerForm.get('email').errors.required" class="invalid-feedback">An email adress is required</div>
         <div *ngIf="registerForm.get('email').errors.email" class="invalid-feedback">
             write a valid email adress
@@ -38,12 +38,12 @@
     <!-- photo -->
     <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Photo url</label>
-        <input type="text" class="form-control" formControlName="photo"/>
+        <input type="text" class="form-control" formControlName="photo" #input4 />
     </div>
     <!-- password -->
     <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Password</label>
-        <input type="password" class="form-control" formControlName="password" [ngClass]="{'is-invalid': (registerForm.get('password').dirty || registerForm.get('password').touched) && !registerForm.get('password').valid}"/>
+        <input type="password" class="form-control" formControlName="password" [ngClass]="{'is-invalid': (registerForm.get('password').dirty || registerForm.get('password').touched) && !registerForm.get('password').valid}" #input4 />
         <div *ngIf="!registerForm.get('password').valid" class="invalid-feedback">
             <div *ngIf="registerForm.get('password').errors.required">A password is necessary</div>
             <div *ngIf="registerForm.get('password').errors.minlength">Your password must have more than 8 characters</div>

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Book } from '../modules/book';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,18 +12,20 @@ export class BooksService {
   // }
 
   public books: Book[]
+  public user: string;
 
   private url = "http://localhost:3000/books"
-  constructor(private http: HttpClient) {
-    
+  constructor(private http: HttpClient, public userApiService: UserService) {
+    this.user = this.userApiService.user.name;
   }
 
   public getAll() {
-    return this.http.get(this.url)
+    
+    return this.http.get(`${this.url}?id_user=${this.user}`)
   }
 
   public getOne(id_book:number) {
-    let newUrl = `${this.url}?id=${id_book}`
+    let newUrl = `${this.url}?id_user=${this.user}&?id_book=${id_book}`
     return this.http.get(newUrl);
   }
 
