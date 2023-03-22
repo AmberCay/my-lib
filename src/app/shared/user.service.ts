@@ -7,21 +7,25 @@ import { User } from '../modules/user';
 })
 export class UserService {
 
-  private url: string;
+  private url: string = "http://localhost:3000/";
   public loggedIn : boolean;
   public user: User;
 
   constructor(private http: HttpClient) {
-    this.loggedIn = false
+
+    this.loggedIn = false;
+    this.user= null
   }
 
-  public register(user: User) {
-    this.url = "http://localhost:3000/register";
-    return this.http.post(this.url, user);
+  public register(new_user: User) {
+    return this.http.post(this.url + "register", new_user);
   };
 
   public login(user: User) {
-    this.url = "http://localhost:3000/login";
-    return this.http.post(this.url, user);
+    this.loggedIn=true;
+    console.log(this.loggedIn);
+    
+    
+    return this.http.post(this.url + "login", user);
   };
 }

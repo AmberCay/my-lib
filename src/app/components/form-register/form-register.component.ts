@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { User } from 'src/app/modules/user';
 import { UserAnswer } from 'src/app/modules/user-answer';
@@ -14,14 +15,14 @@ export class FormRegisterComponent {
 
   public registerForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, public userApiService: UserService, private toastr: ToastrService) {
+  constructor(private formBuilder: FormBuilder, public userApiService: UserService, private toastr: ToastrService, public router: Router) {
     this.buildForm()
   }
 
   buildForm() {
     this.registerForm = this.formBuilder.group({
-      name: ['', Validators.required ],
-      lastName: ['', Validators.required ],
+      f_name: ['', Validators.required ],
+      l_name: ['', Validators.required ],
       email: ['', [Validators.required, Validators.email]],
       photo: ['', ],
       password: ['', [Validators.required, Validators.minLength(8)]],
@@ -37,12 +38,17 @@ export class FormRegisterComponent {
     return check;
   }
 
-  public registerUser(f_name: string, l_name: string, email: string, photo: string, password: string) {
-    let newUser: User = new User(f_name, l_name, email, photo, password)
-
-    this.userApiService.register(newUser).subscribe((res: UserAnswer) => {
+  public registerUser() {
+    let formValue = this.registerForm.value;
+    let user = new User(null, formValue.f_name, formValue.l_name, formValue.email, formValue.photo, formValue.password)
+    console.log(user);
+     
+    this.userApiService.register(user).subscribe((res: UserAnswer) => {
+      console.log(res);
+      
       if (!res.error) {
-        this.toastr.success(`Welcome ${newUser.name}, you have been succesfully registered!`);
+        this.toastr.success(`Welcome ${user.f_name}, you have been succesfully registered!`);
+        this.router.navigate(['/form-login'])
       }
       else {
         this.toastr.error('failed to register');

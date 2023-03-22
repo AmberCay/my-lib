@@ -11,7 +11,6 @@ export class HeaderComponent {
 
   public loggedIn: boolean;
 
-  constructor(public userApiService: UserService) {
-    this.loggedIn = this.userApiService.loggedIn
-  }
+  constructor(public userApiService: UserService) {}
+  
 }

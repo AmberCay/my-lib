@@ -1,12 +1,12 @@
 <div class="page">
   <div class="card">
-    <img class="pfp-img" src="{{amber.photo}}" alt="" />
-    <h2>{{amber.name + ' ' + amber.last_name}}</h2>
+    <img class="pfp-img" src="{{user.photo}}" alt="" />
+    <h2>{{user.f_name + ' ' + user.l_name}}</h2>
     <div class="line"></div>
     <ul>
-      <li>Name: {{amber.name}}</li>
-      <li>Lastname: {{amber.last_name}}</li>
-      <li>Email: {{amber.email}}</li>
+      <li>Name: {{user.f_name}}</li>
+      <li>Lastname: {{user.l_name}}</li>
+      <li>Email: {{user.email}}</li>
     </ul>
   </div>
   <div class="card">
@@ -17,7 +17,7 @@
       <input type="text" name="Lastname" id="lastname" placeholder="Lastname" #input2 />
       <input type="email" name="email" id="email" placeholder="Email" #input3 />
       <input type="text" name="photo" id="photo" placeholder="Photo Url" #input4 />
-      <button on-click="modifyProfile( input1.value, input2.value, input3.value, input4.value)">Modify</button>
+      <button type="button">Modify</button>
     </form>
   </div>
 </div>

@@ -16,16 +16,16 @@ export class BooksService {
 
   private url = "http://localhost:3000/books"
   constructor(private http: HttpClient, public userApiService: UserService) {
-    this.user = this.userApiService.user.name;
   }
 
   public getAll() {
-    
+    this.user = this.userApiService.user.f_name
     return this.http.get(`${this.url}?id_user=${this.user}`)
   }
 
   public getOne(id_book:number) {
-    let newUrl = `${this.url}?id_user=${this.user}&?id_book=${id_book}`
+    this.user = this.userApiService.user.f_name
+    let newUrl = `${this.url}?id_user=${this.user}&id_book=${id_book}`
     return this.http.get(newUrl);
   }
 
@@ -35,7 +35,6 @@ export class BooksService {
 
   public edit(editedBook:Book) {
     return this.http.put(this.url, editedBook);
-
   }
 
   public delete(id_book:number) {

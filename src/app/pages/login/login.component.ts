@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserService } from 'src/app/shared/user.service';
 
 @Component({
   selector: 'app-login',
@@ -7,4 +8,14 @@ import { Component } from '@angular/core';
 })
 export class LoginComponent {
 
+  constructor(public userApiService: UserService) {
+    userApiService.loggedIn
+
+  }
+
+  recieveLoggedIn($event) {
+    this.userApiService.loggedIn = $event
+    console.log(this.userApiService.loggedIn);
+    
+  }
 }

@@ -5,11 +5,11 @@
     </div>
     <div class="links-side">
         <a routerLink="/home" routerLinkActive="active-link">Home</a>
-        <a [hidden]="!loggedIn" routerLink="/books" routerLinkActive="active-link">Books</a>
-        <a [hidden]="!loggedIn" routerLink="/addBooks" routerLinkActive="active-link">Add Books</a>
-        <a [hidden]="!loggedIn" routerLink="/editBooks" routerLinkActive="active-link">Edit Books</a>
-        <a [hidden]="loggedIn" routerLink="/form-login" routerLinkActive="active-link">Login</a>
-        <a [hidden]="loggedIn" routerLink="/form-register" routerLinkActive="active-link">Register</a>
-        <a [hidden]="!loggedIn" routerLink="/profile" routerLinkActive="active-link">Profile</a>
+        <a *ngIf="this.userApiService.loggedIn" routerLink="/books" routerLinkActive="active-link">Books</a>
+        <a *ngIf="this.userApiService.loggedIn" routerLink="/addBooks" routerLinkActive="active-link">Add Books</a>
+        <a *ngIf="this.userApiService.loggedIn" routerLink="/editBooks" routerLinkActive="active-link">Edit Books</a>
+        <a *ngIf="!this.userApiService.loggedIn" routerLink="/form-login" routerLinkActive="active-link">Login</a>
+        <a *ngIf="!this.userApiService.loggedIn" routerLink="/form-register" routerLinkActive="active-link">Register</a>
+        <a *ngIf="this.userApiService.loggedIn" routerLink="/profile" routerLinkActive="active-link">Profile</a>
     </div>
 </header>
